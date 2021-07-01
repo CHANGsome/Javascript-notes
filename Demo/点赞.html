@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点赞demo</title>
+    <style>
+        .handsome{
+            width: 300px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 30px auto;
+            border: 2px solid #ccc;
+            text-align: center;
+            cursor: pointer;
+            -webkit-user-select: none;
+        }
+    </style>
+</head>
+<body>
+<div class="handsome">
+    觉得我很帅的点赞
+    <span style="color: red;">0</span>
+</div>
+<script>
+    var div = document.querySelector(".handsome");
+    var span = div.querySelector("span");
+    // 3种方法实现
+    // 1、全局作用域
+    /*var count = 0;
+    div.onclick = function(){
+        count++;
+        span.innerHTML = count;
+    }*/
+
+    // 2、闭包:自执行函数里面绑定事件
+ /*   ~function(){
+        var count = 0;
+        div.onclick = function(){
+            count++;
+            span.innerHTML = count;
+        }
+    }();*/
+
+ // 3、闭包：事件绑定为自执行函数的返回值
+    /*div.onclick = function(){
+        var count = 0;
+        return function () {
+            count++;
+            span.innerHTML = count;
+        }
+    }();*/
+
+    // 全局作用域容易变量冲突，闭包非常耗内存。所以考虑其他方法。
+
+    // 4、从页面获取当前的count
+/*    div.onclick = function(){
+//        var count = span.innerHTML;
+//        count++;
+//        span.innerHTML = count;
+        span.innerHTML ++ ;
+
+        // 这个方法的弊端：从页面获取span.innerHTML和将span.innerHTML放回页面中都需要额外的时间开销。
+    }*/
+
+    // 5、推荐方法：给元素添加自定义属性
+    div.count = 0;
+    div.onclick = function () {
+        span.innerHTML = ++this.count;
+    }
+
+</script>
+</body>
+</html>

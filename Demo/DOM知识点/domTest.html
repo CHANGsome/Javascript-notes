@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div class="bg position box" id="box"></div>
+    <!--我是注释-->
+    <div></div>
+    <p></p>
+    <p></p>
+</div>
+
+<script src="DomUtils.js"></script>
+<script>
+//    var container = document.getElementsByClassName("container")[0];
+//    console.log(children(container,'div'));
+    var box = document.getElementById("box");
+console.log(hasClass(box, "bg1"));
+</script>
+</body>
+</html>

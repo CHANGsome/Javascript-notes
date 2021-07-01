@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="input">
+
+<script>
+    var input = document.getElementById("input");
+    var data = {};
+    var temp = {};
+    Object.defineProperty(data, "name", {
+        get(){
+            return temp['name'];
+        },
+        set(val){
+            temp['name'] = val;
+            input.value = val;
+        }
+    });
+    input.value = data['name'];
+    input.addEventListener("input", function () {
+        data['name'] = input.value;
+    }, false);
+</script>
+</body>
+</html>

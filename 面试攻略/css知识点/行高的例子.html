@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>行高test</title>
+    <style>
+        body{
+            padding: 100px;
+        }
+        #box{
+            display: none;
+        }
+        .span1{
+            line-height: 50px;
+            background-color: red;
+            vertical-align: middle;
+        }
+        .span2{
+            font-size: 30px;
+            line-height: 100px;
+            background-color: bisque;
+            vertical-align: middle;
+        }
+        .div1{
+            display: inline-block;
+            font-size: 25px;
+            vertical-align: middle;
+            background-color: yellow;
+            height: 200px;
+        }
+        .div2{
+            display: inline-block;
+            font-size: 30px;
+            vertical-align: middle;
+            background-color: chocolate;
+        }
+        #box2{
+            background-color: cornflowerblue;
+            height: 200px;
+        }
+        #box2 span{
+            vertical-align: top;
+            border: 3px solid #111;
+            padding: 10px;
+            margin: 10px;
+        }
+        #box2 div{
+            background-color: yellow;
+            width: 100px;
+            height: 100px;
+        }
+        #box3{
+            width: 100px;
+
+            line-height: 100px;
+            background-color: antiquewhite;
+        }
+        #box3 span{
+            border: 1px solid red;
+            font-size: 30px;
+
+        }
+        #box3 div{
+            border: 1px solid red;
+        }
+        #box4{
+            background-color: cornflowerblue;
+        }
+        #box4 img{
+            width: 100px;
+            height: auto;
+            vertical-align: middle;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="box">
+        <span class="span1">span1</span>
+        <span class="span2">span2</span>
+        <div class="div1">div1</div>
+        <div class="div2">div2</div>
+    </div>
+    <div id="box2">
+        <span>hhhgaajj</span>
+        <div>test</div>
+    </div>
+
+    <div id="box3">
+        <span>box3</span>
+        <div>test</div>
+    </div>
+    <div id="box4">
+        <img src="imgs/1.jpg" alt="">
+        hhhgffpopo
+    </div>
+</body>
+</html>

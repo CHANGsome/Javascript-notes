@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>二叉树</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function BinaryTree(){
+            var Node = function (key) {
+                this.key = key;
+                this.left = null;
+                this.right = null;
+            }
+            var root = null;
+            this.insert = function (key) {
+                var newNode = new Node(key);
+                if(root === null){
+                    root = newNode;
+                }else{
+                    insertNode(root, newNode);
+                }
+            }
+            var insertNode = function (currentNode, newNode) {
+                if(newNode.key < currentNode.key) {
+                    if (currentNode.left === null){
+                        currentNode.left = newNode;
+                    }else{
+                        insertNode(currentNode.left, newNode)
+                    }
+                }else{
+                    if(currentNode.right === null){
+                        currentNode.right = newNode;
+                    }else{
+                        insertNode(currentNode.right, newNode);
+                    }
+                }
+            }
+            //中序遍历
+            this.inOrderTraverse = function (callback) {
+                inOrderTraverseNodes(root, callback);
+            }
+            var inOrderTraverseNodes = function (node, callback) {
+                if(node!=null){
+                    inOrderTraverseNodes(node.left, callback);
+                    callback(node.key);
+                    inOrderTraverseNodes(node.right, callback);
+                }
+            }
+            //前序遍历
+            this.preOrderTraverse = function () {
+                preOrderTraverseNodes(root);
+            }
+            var preOrderTraverseNodes = function (node) {
+                if(node!==null){
+                    console.log(node.key);
+                    preOrderTraverseNodes(node.left);
+                    preOrderTraverseNodes(node.right);
+                }
+            }
+            //后序遍历
+            this.postOrderTraverse = function () {
+                postOrderTraverseNodes(root);
+            }
+            var postOrderTraverseNodes = function (node) {
+                if(node!==null){
+                    postOrderTraverseNodes(node.left);
+                    postOrderTraverseNodes(node.right);
+                    console.log(node.key);
+                }
+            }
+            //get the minimum
+            this.minNode = function () {
+                return getMinNode(root);
+            }
+            var getMinNode = function(node){
+                if(node){
+                    while(node && node.left!==null){
+                        node = node.left;
+                    }
+                    return node.key;
+                }
+                return "null tree";
+            }
+            //get the maximum
+            this.maxNode = function () {
+                return getMaxNode(root);
+            }
+            var getMaxNode = function(node){
+                if(node){
+                    while(node && node.right!==null){
+                        node = node.right;
+                    }
+                    return node.key;
+                }
+                return "null tree";
+            }
+            // search a key
+            this.search = function (key) {
+                return searchNode(root, key);
+            }
+            var searchNode = function (node, key) {
+                if(node === null){
+                    return false;
+                }
+                if(node.key == key){
+                    return true;
+                }else if(key < node.key){
+                    return searchNode(node.left, key);
+                }else {
+                    return searchNode(node.right, key);
+                }
+            }
+        }
+
+        var nodes = [8, 3, 10, 1, 6, 14, 4, 7, 13];
+        var binaryTree = new BinaryTree();
+        nodes.forEach(function (key) {
+            binaryTree.insert(key);
+        })
+        function callBack(key){
+            console.log(key);
+        }
+        binaryTree.inOrderTraverse(callBack);
+        //binaryTree.preOrderTraverse();
+        //binaryTree.postOrderTraverse();
+        //console.log(binaryTree.minNode());
+        //console.log(binaryTree.maxNode());
+        console.log(binaryTree.search(7) ? "7 is found" : "7 is not found");
+        console.log(binaryTree.search(9) ? "9 is found" : "9 is not found");
+    </script>
+</body>
+</html>

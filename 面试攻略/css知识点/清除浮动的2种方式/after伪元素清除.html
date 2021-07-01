@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>after清除浮动</title>
+    <style>
+        .left{
+            width: 100px;
+            height: 100px;
+            float: left;
+            background-color: gold;
+        }
+        .right{
+            width: 100px;
+            height: 200px;
+            float: left;
+            background-color: lightcoral;
+        }
+        .container::after{
+            content: "";
+            height: 0;
+            display: block;
+            clear: both;
+            visibility: visible;
+        }
+        .box{
+            width: 300px;
+            height: 500px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+<!--
+使用after伪元素清除浮动：
+1、content必须要设置。
+2、必须clear:both;才能让after出现在浮动元素后面。
+3、after默认是inline，必须设置block才能占一行。
+4、height和visibility属性都是为了让内容隐形，不占高度。
+-->
+<div class="container">
+    <div class="left">left</div>
+    <div class="right">right</div>
+</div>
+<div class="box">box</div>
+</body>
+</html>

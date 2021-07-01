@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <style>
+        .menu-a{
+            display: block;
+            width: 150px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            text-decoration: none;
+            color: #eee;
+            background-color: #333;
+        }
+        .menu-a:hover,
+        .menu-a:active{
+            background-color: #eee;
+            color: red;
+        }
+        .icon {
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 5px solid #eee;
+            display: inline-block;
+        }
+        .icon:hover{
+            border-bottom: 5px solid red;
+        }
+        .hidden{
+            /*display: none;*/
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu hidden">
+        <a href="javascript:;" class="menu-a">客户服务 <span class="icon"></span></a>
+    </div>
+<ul>
+    <li>联系客服</li>
+    <li>帮助中心</li>
+    <li>知识产权</li>
+    <li>规则中心</li>
+</ul>
+</body>
+</html>

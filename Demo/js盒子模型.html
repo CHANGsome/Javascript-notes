@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{ margin: 0; padding: 0;}
+        #div1{
+            width: 200px;
+            height: 200px;
+            margin: 40px auto;
+            border: 10px solid green;
+            padding: 20px;
+            overflow: auto;
+            opacity: .4;
+            filter: alpha(opacity=40);
+            /*
+
+            */
+            /* box-sizing:  border-box; 加上的padding要在宽度上减去 */
+        }
+    </style>
+    <!--<link rel="stylesheet" href=""/>-->
+</head>
+<body>
+<div id="div2" style="position: relative">
+    <div style="position: absolute; width: 200px; " id="div1" class="div div1">习近平在网信工作座谈会上讲话  专题  漫评  这三年张德江主持会议  俞正声会见代表  刘云山陕西调研2016年一季度全国网信系统行政执法工作取得新成效习近平在网信工作座谈会上讲话  专题  漫评  这三年张德江主持会议  俞正声会见代表  刘云山陕西调研2016年一季度全国网信系统行政执法工作取得新成效习近平在网信工作座谈会上讲话  专题  漫评  这三年张德江主持会议  俞正声会见代表  刘云山陕西调研2016年一季度全国网信系统行政执法工作取得新成效习近平在网信工作座谈会上讲话  专题  漫评  这三年张德江主持会议  俞正声会见代表  刘云山陕西调研2016年一季度全国网信系统行政执法工作取得新成效习近平在网信工作座谈会上讲话  专题  漫评  这三年张德江主持会议  俞正声会见代表  刘云山陕西调研2016年一季度全国网信系统行政执法工作取得新成效习近平在网信工作座谈会上讲话  专题  漫评  这三年张德江主持会议  俞正声会见代表  刘云山陕西调研2016年一季度全国网信系统行政执法工作取得新成效刘云山陕西调研2016年一季度全国网信系统行政执法工作取得新成效刘云山陕西调研2016年一季度全国网信系统行政执法工作取得新成效</div>
+</div>
+<!--<video src=""></video>-->
+<!--<audio src=""></audio>-->
+<select name="" id="df">
+    <option value=""></option>
+    <option value=""></option>
+    <option value=""></option>
+</select>
+</body>
+</html>
+<script>
+    /*
+    *   js中的盒子模型
+    *       1、client系列（和内容是否溢出没关系）
+    *       clientHeight 高度+上下填充（padding）
+    *       clientWidth  宽度+左右填充（padding）
+    *       clientLeft  左边框宽度(border-left-width)
+    *       clientTop   上边框宽度(border-top-width)
+    *
+    *       2、offset系列
+    *       offsetWidth  宽度+左右填充+左右边框  ==> clientWidth+左右边框
+    *       offsetHeight 高度+上下填充+上下边框  ==> clientHeight+上下边框
+    *       offsetLeft  当前元素外边框距离父级参照物内边框的左偏移量，获取到的值永远不会出现小数（按照四舍五入计算）。
+    *       offsetTop  当前元素的外边框距离父级参照物的内边框的上偏移量
+    *       offsetParent 当前元素的父级参照物
+    *
+    *       3、scroll系列
+    *       scrollWidth  区别于clientWidth  内容+左填充,如果没有发生溢出就是和clientWidth相等的
+     *      scrollHeight 区别于clientHeight 内容+上填充，如果没有发生溢出就是和clientHeight相等的
+     *      // 当有内容溢出的时候，上述两个属性获取到的结果都是约等于的值，因为：同一个浏览器，我们是否设置overflow:hidden;对于最终的结果是有影响的；在不同的浏览器中我们获取到的结果也是不相同的。
+     *      scrollTop：滚动条在拉动的过程中，往下滚动的高度。
+     *      scrollLeft：滚动条在拉动的过程中，往右滚动的宽度。
+     *
+     *
+     *      注：
+     *      1、关于JS盒子模型属性取值的问题（上面13个属性）。
+     *      我们通过这13个属性值获取的结果永远不可能出现小数，都是整数；浏览器获取结果的时候，在原来真是结果的基础上进行四舍五入。
+     *
+     *      2、关于操作浏览器本身的盒子模型信息。
+     *      1）document.documentElement.clientWidth/clientHeight是当前浏览器可视窗口的宽度和高度（一屏幕的宽度和高度）
+     *
+     *      2）document.documentElement.scrollWidth/scrollHeight是当前页面的真实宽度和高度（所有屏加起来的宽度和高度，但是是一个约等于的值）
+     *
+     *      3）我们不管哪些属性，也不管什么浏览器，也不管是获取还是设置，想要都兼容的话，需要写两套：
+     *      document.documentElement[attr] || document.body[attr] （顺序不能变，document.documentElement必须在前面）
+     *      例如：
+     *      【获取】document.documentElement.clientWidth || document.body.clientWidth
+     *      【设置】document.documentElement.scrollTop=0;
+     *            document.body.scrollTop=0;
+     *
+     *       win: 编写一个有关于操作浏览器盒子模型的方法。
+     *       如果只传递了attr没有传递value，默认的意思是【获取】
+     *       如果两个参数都传递了，意思是【设置】
+     *
+     *       function win(attr, value){
+     *          if(typeof value === "undefined"){   // 【获取】
+     *              return document.documentElement[attr] || document.body[attr];
+     *           }
+     *           // 【设置】
+     *           document.documentElement[attr] = value;
+     *           document.body[attr] = value;
+     *       }
+    *
+    * */
+    var oDiv = document.getElementById('div1');
+    //console.dir(oDiv);
+    //console.log(oDiv.clientHeight);
+    //console.log(oDiv.scrollHeight);
+    //console.log(oDiv.scrollTop);
+    //console.log(oDiv.scrollLeft);
+
+    /*
+    *   获取可视窗口：document.documentElement.clientHeight || document.body.clientHeight
+    *   是不是可以加到我们的untils
+    *
+    * */
+
+    /*
+    *   通过元素的style属性只能获取行内样式,但是我们一般不把样式写在行内
+    *   获取元素的浏览器计算后的样式
+    * */
+    function getCss(curEle){ //返回了那个样式对象
+        if(window.getComputedStyle){ //如果在window下存在一个getComputedStyle的属性，那么我就认为支持这个方法
+            return window.getComputedStyle(curEle,null); //null参数是伪类
+        }else{ //ie低版本
+            return curEle.currentStyle;
+        }
+    }
+    //我想获取到具体的某一个属性
+    function getCss(curEle,attr){
+        if(/MSIE (?:6|7|8)/.test(window.navigator.userAgent)){
+            return curEle.currentStyle[attr];
+        }
+        return window.getComputedStyle(curEle,null)[attr];
+    }
+    //需要规避复合值的问题 margin padding
+    //把带获取到带单位的把单位去掉  px em pt rem deg
+    function getCss(curEle,attr){
+        //处理带单位的问题
+        var reg = /^(-?\d+\.?\d+)(?:px|em|pt|deg|rem)$/;
+        var val = null;
+        if(/MSIE (?:6|7|8)/.test(window.navigator.userAgent)){
+            debugger
+            //这里处理filter的滤镜问题  alpha(opacity=40);
+
+            if(attr === 'opacity'){
+
+                //alpha(opacity=40)
+                val = curEle.currentStyle['filter'];
+                var reg1 = /^alpha\(opacity=(\d+(\.\d+)?)\)/;
+                return reg1.test(val) ?  RegExp.$1/100 : 1;
+            }else{
+                val = curEle.currentStyle[attr];
+            }
+
+        }else{
+            val = window.getComputedStyle(curEle,null)[attr];
+        }
+        return reg.test(val)? parseFloat(val)  :val  ; //如果正则验证通过，寿命返回值是带单位的，那么我们就要人为去掉这个单位。否则不变
+    }
+    getCss(oDiv,'opacity');
+
+
+
+</script>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .container{
+            width: 400px;
+            margin: 100px auto;
+            background-color: green;
+            color: #fff;
+            padding: 30px;
+        }
+        li{
+            list-style: none;
+            line-height: 30px;
+        }
+        em{
+            font-style: normal;
+            background-color: #aaa;
+            color: #fff;
+            font-weight: bold;
+            display: inline-block;
+            width: 13px;
+            height: 15px;
+            line-height: 15px;
+            text-align: center;
+            cursor: pointer;
+            margin-left: -18px;
+        }
+        .subUl{
+            margin-left: 50px;
+            display: none;
+        }
+        li span{
+            margin-left: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul>
+            <li>
+                <em>+</em><span>第一级第一个菜单</span>
+                <ul class="subUl">
+                    <li>
+                        <em>+</em><span>第二级第一个菜单</span>
+                        <ul class="subUl">
+                            <li>第三级第一个菜单</li>
+                            <li>
+                                <em>+</em><span>第三级第二个菜单</span>
+                                <ul class="subUl">
+                                    <li>第四级第一个菜单</li>
+                                    <li>第四级第二个菜单</li>
+                                    <li>第四级第三个菜单</li>
+                                </ul>
+                            </li>
+                            <li>第三级第三个菜单</li>
+                        </ul>
+                    </li>
+                    <li>第二级第二个菜单</li>
+                    <li>第二级第三个菜单</li>
+                </ul>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <em>+</em><span>第一级第二个菜单</span>
+                <ul class="subUl">
+                    <li>
+                        <em>+</em><span>第二级第一个菜单</span>
+                        <ul class="subUl">
+                            <li>第三级第一个菜单</li>
+                            <li>
+                                <em>+</em><span>第三级第二个菜单</span>
+                                <ul class="subUl">
+                                    <li>第四级第一个菜单</li>
+                                    <li>第四级第二个菜单</li>
+                                    <li>第四级第三个菜单</li>
+                                </ul>
+                            </li>
+                            <li>第三级第三个菜单</li>
+                        </ul>
+                    </li>
+                    <li>第二级第二个菜单</li>
+                    <li>第二级第三个菜单</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <script src="../utils.js"></script>
+    <script>
+        var container = document.getElementsByClassName("container")[0];
+        container.onclick = function (e) {
+            e = e || window.event;
+            var tar = e.target || e.srcElement;
+            if(/^em|span$/i.test(tar.tagName)){
+                var tarParent = tar.parentNode;
+                var ul = utils.children(tarParent, "ul")[0];
+                var em = utils.children(tarParent, "em")[0];
+                var isOpen = utils.getCss(ul, "display");
+                if(isOpen === "block"){
+                    ul.style.display = "none";
+                    em.innerHTML = "+";
+                    var childUl = ul.getElementsByClassName("subUl");
+                    var childem = ul.getElementsByTagName("em");
+                    for(let i=0;i<childUl.length;i++){
+                        childUl[i].style.display = "none";
+                        childem[i].innerHTML = "+";
+                    }
+                }else{
+                    ul.style.display = "block";
+                    em.innerHTML = "-";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

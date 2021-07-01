@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>conText</title>
+    <style>
+      .box {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .box > div {
+        height: 100px;
+        width: 500px;
+        border: 2px solid green;
+      }
+    </style>
+  </head>
+  <body>
+    <!--<div class="box">-->
+
+    <!--</div>-->
+    <!--<div class="box">-->
+    <!--<a href="###"></a>-->
+    <!--</div>-->
+
+    <!--<ul name="ulNode"><li>list</li></ul>-->
+    <!--<nav id="nav">hhh</nav>-->
+    <div class="box">
+      <div>1</div>
+      <div>1</div>
+      <div>1</div>
+      <div>1</div>
+      <div>1</div>
+      <div>1</div>
+      <div>1</div>
+      <div>1</div>
+    </div>
+    <script type="text/javascript">
+      //setInterval("alert('welcom')", 1000);
+      //    function A() {
+      //        this.x = 1;
+      //    }
+      //    A.prototype.f1 = function () {
+      //
+      //    }
+      //    function B() {
+      //        A.call(this);
+      //    }
+      //    B.prototype.f2 = function () {
+      //
+      //    }
+      //    var b = new B;
+      //function queryUrlParameter(url){
+      //    var link = document.createElement("a");
+      //    link.href = url;
+      //    var search = link.search.substr(1).split(/&|=/g);
+      //    var obj = {};
+      //    if(search.length === 0){
+      //        return ;
+      //    }
+      //    for(var i=0;i<search.length;i+=2){
+      //        var key = search[i];
+      //        var value = search[i+1];
+      //        obj[key] = value;
+      //    }
+      //    link = null;
+      //    return obj;
+      //}
+      //
+      //console.log(queryUrlParameter('http://www.zhufengpeixun.cn/stu/?name=zxt&age=27#teacher'));
+      // var box = document.getElementById("box");
+      // function fn1() {
+      //     console.log(1);
+      // }
+      // function fn2() {
+      //     console.log(2);
+      // }
+      // box.addEventListener("click", fn2, false);
+      // box.addEventListener("click", fn1, false);
+      // box.addEventListener("mouseover", fn1, false);
+      var a = 10;
+      var obj = {
+        a: 20,
+        say() {
+          console.log(this.a);
+        },
+      };
+      obj.say();
+      var anotherObj = { a: 30 };
+    </script>
+  </body>
+</html>

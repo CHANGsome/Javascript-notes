@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>title</title>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="box"></div>
+    <div id="box"></div>
+    <script>
+        // 获取页面中ID值为box的所有元素标签
+        // 1、直接使用box
+        console.log(box);
+
+        // 2、获取所有元素后遍历
+        var eleList = document.getElementsByTagName("*");
+        var res = [];
+        for(var i=0;i<eleList.length;i++){
+            var curEle = eleList[i];
+            curEle.id === "box" ? res.push(curEle) : null;
+        }
+        console.log(res);
+
+        // 3、querySelectorAll
+        console.log(document.querySelectorAll("#box"));
+    </script>
+</body>
+</html>

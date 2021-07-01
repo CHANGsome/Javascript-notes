@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>background</title>
+    <style>
+       .box{
+           width: 800px;
+           height: 500px;
+           background: url("imgs/1.jpg") no-repeat;
+           background-position: top center;
+           /*-webkit-background-size: contain;*/
+           /*background-size: contain;*/
+           -webkit-background-size: cover;
+           background-size: cover;
+           /*clip-path: inset(100px 50px);*/
+           clip-path: circle(110px at 200px 150px);
+       }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

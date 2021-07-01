@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            background-color: green;
+            position: absolute;
+
+            /*实现盒子居中，但是这个方法IE下兼容性不好，一般用于移动端*/
+            /*left: 0;*/
+            /*right: 0;*/
+            /*top: 0;*/
+            /*bottom: 0;*/
+            /*margin: auto;*/
+
+            /*left: 50%;*/
+            /*top: 50%;*/
+            /*margin: -100px 0 0 -100px;*/
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        div
+    </div>
+
+    <script>
+        var box = document.getElementsByClassName("box")[0];
+
+        // 用JS实现盒子在页面居中
+        box.style.left = ((document.documentElement.clientWidth || document.body.clientWidth)-box.offsetWidth)/2 + "px";
+        box.style.top = ((document.documentElement.clientHeight || document.body.clientHeight)-box.offsetHeight)/2 + "px";
+
+        box.onmousedown = function (e) {
+            e = e || window.event;
+            var leftDis = e.clientX - parseFloat(this.style.left);
+            var topDis = e.clientY - parseFloat(this.style.top);
+            this.leftDis = leftDis;
+            this.topDis = topDis;
+
+            // 给元素绑定移动和抬起的事件
+            if(this.setCapture)
+            {
+                this.setCapture();  // 把当前的鼠标和this(box)绑定在一起
+                this.onmousemove = mouseMove;
+                this.onmouseup = mouseUp;
+            }else{
+                /*document.onmousemove = mouseMove;
+                document.onmouseup = mouseUp;*/
+                // 这样绑定的话，mouseMove和mouseUp中的this就都编程document了
+
+                var that = this;
+                document.onmousemove = function (e) {
+                    mouseMove.call(that, e);
+                }
+                document.onmouseup = function (e) {
+                    mouseUp.call(that, e);
+                }
+            }
+
+        }
+        function mouseMove(e) {
+            e = e || window.event;
+            var maxL = (document.documentElement.clientWidth || document.body.clientWidth) - this.offsetWidth;
+            var maxT = (document.documentElement.clientHeight || document.body.clientHeight) - this.offsetHeight;
+            var curL = e.clientX - this.leftDis;
+            var curT = e.clientY - this.topDis;
+            curL = curL<0 ? 0 : (curL<maxL ? curL: maxL);
+            curT = curT<0 ? 0 : (curT<maxT ? curT : maxT);
+            this.style.left = curL+"px";
+            this.style.top = curT+"px";
+        }
+        function mouseUp() {
+            if(this.releaseCapture){
+                this.releaseCapture();  // 把当前的鼠标和盒子box接触绑定
+                this.onmousemove = null;
+                this.onmouseup = null;
+            }else{
+                document.onmousemove = null;
+                document.onmouseup = null;
+            }
+
+        }
+
+        // 当鼠标移动过快的时候，我们的鼠标会脱离盒子，导致盒子的mouseup和mousemove事件都移除不了=>“鼠标焦点丢失”。
+        // 在IE和火狐浏览器中，我们用一个方法把盒子和鼠标绑定在一起即可。
+        // 但是这个方法在谷歌下不兼容
+        // 鼠标再快也跑不出文档：我们把mousemove和mouseup绑定给document。
+    </script>
+</body>
+</html>

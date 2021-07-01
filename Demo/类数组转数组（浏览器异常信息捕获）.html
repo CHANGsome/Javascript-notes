@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类数组转数组（浏览器异常信息捕获）</title>
+</head>
+<body>
+
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+
+
+
+<script>
+   /* // 常见的类数组：arguments、HTMLCollection、NodeList ... ...
+    // 讲这些类数组转换成数组的时候，通常使用Array.prototype.slice.call(),
+    // 但是有些类数组使用该方法不会兼容所有浏览器，如HTMLCollection和NodeList就不兼容IE6-8
+    var boxList = document.getElementsByClassName("box"); //=>boxList是一个HTMLCollection
+    var boxArr = Array.prototype.slice.call(boxList);   // IE6-8下报错，Array.prototype.slice: "this"不是JavaScript对象
+
+    // arguments不存在任何兼容问题*/
+
+   // 所以通过检测浏览器异常信息，来解决不兼容的类数组出现的问题
+    // 一般情况下，浏览器报错，代码就不会继续执行了，但是使用try catch机制捕获错误信息，代码可以继续执行
+    // try中的代码执行出错了，会默认执行catch中的代码
+
+//    try{
+//
+//    }catch (e){
+//        // console.log(e.message); //=>e.message可以收集错误信息
+//        //可以手动抛出一条错误信息，阻止代码继续执行
+//        throw new Error("error");
+//        // new ReferenceError => 引用错误
+//        // new TypeError => 类型错误
+//        // new RangeError => 范围错误
+//    }finally{
+//        // 不管try中的代码是否报错，都要执行finally中的代码，一般不写
+//    }
+
+    // 解决类数组转化为数组不兼容的问题
+    var utils = {
+        listToArray: function(likeArray){
+            var arr = [];
+            try{
+                arr = Array.prototype.slice.call(likeArray);
+            }catch(e){
+                for(var i=0;i<likeArray.length;i++){
+                    arr.push(likeArray[i]);
+                }
+            }
+            return arr;
+        }
+    }
+
+</script>
+</body>
+</html>

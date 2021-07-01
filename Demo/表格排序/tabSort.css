@@ -1,0 +1,35 @@
+@charset "utf-8";
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+.box{
+    width: 400px;
+    border: 1px solid green;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px green;
+    margin: 20px auto;
+    padding: 10px;
+}
+.box-table{
+    letter-spacing: 2px;
+}
+.box-table .table-head th{
+    width: 100px;
+    height: 30px;
+    background-color: green;
+    color: white;
+}
+.box-table .table-body td{
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+.box-table .table-body tr.even{
+    background-color: burlywood;
+}
+.cursor{
+    cursor: pointer;
+}

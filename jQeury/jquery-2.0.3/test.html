@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <script src="jquery-2.0.3.js"></script>
+    <script src="test.js"></script>
+    <style>
+        #box{
+            background-color: #339933;
+        }
+    </style>
+
+</head>
+<body>
+<div id="box">
+    div
+</div>
+
+<script>
+/*    console.log($(""));
+    console.log($("").init());
+    console.log($.prototype);
+    console.log($.prototype.init(""));*/
+
+/*var obj = {
+    0: 'a',
+    length: 1
+};
+var arr = ['b', 'c'];
+var newObj = $.merge(obj, arr);
+console.log(obj);
+console.log(arr);*/
+
+
+/*console.log($("#box"));
+
+var box = document.getElementById("box");
+console.log(Object.prototype.toString.call($(box)));*/
+
+
+/*$(function () {
+    alert(1);
+});*/
+
+var data = 1;
+
+function runAsync(){
+    var defer = $.Deferred();
+    //做一些异步操作
+    setTimeout(function(){
+        console.log('执行完成');
+        defer.resolve('异步请求成功之后返回的数据');
+    }, 1000);
+    return defer;
+}
+runAsync().then(function(data){
+    console.log(data)
+});
+
+
+</script>
+</body>
+</html>

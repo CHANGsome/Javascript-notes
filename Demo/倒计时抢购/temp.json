@@ -1,0 +1,20 @@
+[
+  {
+    "name": "zhangsan",
+    "age": 25,
+    "score": {
+      "English": 90,
+      "math": 100,
+      "Chinese":98
+    }
+  },
+  {
+    "name": "lisi",
+    "age": 22,
+    "score": {
+      "English": 80,
+      "math": 90,
+      "Chinese":88
+    }
+  }
+]

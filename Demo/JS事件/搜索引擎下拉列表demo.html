@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            display: block;
+            text-decoration: none;
+            color: #000;
+        }
+        li{
+            list-style: none;
+        }
+        .container{
+            width: 500px;
+            margin: 100px auto;
+        }
+        .searchInput{
+            width: 300px;
+            height: 30px;
+            padding: 0 5px;
+        }
+        .searchList{
+            width: 400px;
+            border: 1px solid #999;
+            position: relative;
+            top: -1px;
+            display: none;
+        }
+        .searchList li a{
+            height: 30px;
+            line-height: 30px;
+            letter-spacing: 1px;
+            padding: 0 10px;
+        }
+        .searchList li a:hover{
+            background-color: #aaa;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="text" class="searchInput">
+        <ul class="searchList">
+            <li><a href="javascript:;">事件捕获</a></li>
+            <li><a href="javascript:;">目标阶段</a></li>
+            <li><a href="javascript:;">事件冒泡</a></li>
+            <li><a href="javascript:;">事件委托</a></li>
+            <li><a href="javascript:;">阻止冒泡</a></li>
+        </ul>
+    </div>
+
+    <script>
+        var searchInput = document.getElementsByClassName("searchInput")[0];
+        var searchList = document.getElementsByClassName("searchList")[0];
+
+        // 获取光标和在文本框输入两个事件
+        searchInput.onkeyup = searchInput.onfocus = function () {
+            // 先去除文本框内容中开头和结尾的空格
+            var value = this.value.replace(/(^ +| +$)/,"");
+            searchList.style.display = value.length>0 ? "block" : "none";
+        }
+        document.body.onclick = function (e) {
+            e = e || window.event;
+            e.target = e.target || e.srcElement;
+            console.log(e.target.tagName);
+            console.log(e.target.parentNode.parentNode.className === "searchList");
+            if(e.target.tagName.toLowerCase() === "a" && e.target.parentNode.parentNode.className === "searchList"){
+                searchInput.value = e.target.innerHTML;
+                searchList.style.display = "none";
+                return ;
+            }
+            searchList.style.display = "none";
+        }
+
+        // 我们可以阻止一个容器中某些特殊性的元素，不让其在委托的范围内，值需要把这些不需要委托的元素阻止冒泡传播即可
+        searchInput.onclick = function (e) {
+            e = e || window.event;
+            e.stopPropagation ? e.stopPropagation() : e.cancelBubble  = true;
+        }
+    </script>
+</body>
+</html>

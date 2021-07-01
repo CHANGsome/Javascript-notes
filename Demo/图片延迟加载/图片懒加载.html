@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>图片懒加载</title>
+</head>
+<body>
+<!--
+图片懒加载的作用：保证页面打开速度（3s之内如果首页打不开，就已经算是死亡页面了）。
+原理：
+1）对于首屏内容中的图片：首先给对应的区域一张默认图片占着位置（默认图需要非常小，一般可以维持在5kb以内），当首屏内容都加载完成之后（或者也可以给一个延迟的时间），我再开始加载真实的图片。
+2）对于其他屏中的图片：也是给一张默认的图片占位，当滚动条滚动到对应区域的时候，我们再开始加载真实的图片。
+
+扩展：数据的异步加载，开始只把前两屏的数据加载绑定出来，后面的数据不进行处理，当页面滚动到对于区域的时候，再重新请求数据然后绑定渲染数据。
+
+
+-->
+<div class="container">
+    <ul class="list">
+     <!--   <li class="list-item">
+            <div class="list-item-div"><img src="" alt=""></div>
+            <article class="list-item-article">
+                <h3>标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题</h3>
+                <p>描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述</p>
+            </article>
+        </li>-->
+    </ul>
+</div>
+
+<script src="../utils.js"></script>
+<script src="function.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>overflow清除浮动</title>
+    <style>
+        .left{
+            width: 100px;
+            height: 100px;
+            float: left;
+            background-color: gold;
+        }
+        .right{
+            width: 100px;
+            height: 200px;
+            float: left;
+            background-color: lightcoral;
+        }
+        .container{
+            overflow: auto;
+        }
+        .box{
+            width: 300px;
+            height: 500px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+<!--
+1、子元素浮动时形成一个BFC，父元素默认不计算这个BFC的高度，所以浮动会造成父元素高度塌陷。
+2、设置父元素的overflow为hidden或者auto都可以清除浮动（scroll也可以，但是会出现滚动条），
+因为overflow属性让父元素计算高度的时候将BFC的高度也计算了进来。
+-->
+    <div class="container">
+        <div class="left">left</div>
+        <div class="right">right</div>
+    </div>
+    <div class="box">box</div>
+</body>
+</html>

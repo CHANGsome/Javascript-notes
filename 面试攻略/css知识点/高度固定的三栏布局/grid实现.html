@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三栏布局</title>
+    <style>
+        .content{
+            width: 100%;
+            display: grid;
+            grid-template-columns: 300px auto 300px;
+        }
+        .content div{
+            /*height: 100%;*/
+        }
+        .left,.right{
+            background-color: chocolate;
+        }
+        .middle{
+            background-color: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+<section class="content">
+    <div class="left">left</div>
+    <div class="middle">
+        <p>middle</p>
+        <p>middle</p>
+        <p>middle</p>
+        <p>middle</p>
+        <p>middle</p>
+    </div>
+    <div class="right">class</div>
+</section>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="box">box</div>
+<script>
+    /*
+    * bindEvent：处理DOM2级事件绑定的兼容性问题（绑定方法）
+    * curEle: 要绑定事件的元素
+    * eventType：要绑定事件的类型（“click”、“mouseover” ...）
+    * eventFn：要绑定的方法。
+    * */
+    function bindEvent(curEle, eventType, eventFn){
+        if("addEventListener" in document){
+            curEle.addEventListener(eventType, eventFn, false);
+            return ;
+        }
+        curEle.attachEvent("on" + eventType, eventFn.bind(curEle));
+    }
+    function unbindEvent(curEle, eventType, eventFn){
+        if("addEventListener" in document){
+            curEle.removeEventListener(eventType, eventFn, false);
+            return ;
+        }
+        curEle.detachEvent("on" + eventType, eventFn);
+    }
+
+    var box = document.getElementById("box");
+    function fn1() {
+        alert(1);
+        alert(this);
+    }
+    bindEvent(box, "click", fn1);
+    //unbindEvent(box, "click", fn1);
+</script>
+</body>
+</html>

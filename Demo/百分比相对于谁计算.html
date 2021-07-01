@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <style>
+        .parent{
+            width: 100%;
+            height: 100%;
+            background-color: green;
+        }
+        .child{
+            width: 50%;
+            height: 50%;
+            background-color: pink;
+            position: fixed;
+        }
+    </style>
+</head>
+<body>
+<!--
+ position：absolute 相对于最近一层的设置了定位的父级元素（除去position:static）（可以向上寻找满足条件的父级元素），
+                  在没有设置了定位元素的父级元素时，相对于HTML根元素定位（不是相对于body）
+  position: fixed  相对于视窗（浏览器）定位
+1、对于absolute和fixed，相对于谁来定位，百分比就相对于谁来计算，如果找到的元素height为auto，那么当前元素height为0，计算百分比时需要一个确定的高度。
+2、
+一:width:
+    width的百分比相对于最近一层的父级元素（因为最近一层的父级元素肯定有确定的宽度，所有不用向上寻找）。
+    注意：当元素设置了绝对定位之后，相对于最近一层设置了定位的父级元素（除去static）（此时可以向上寻找满足条件的父级元素），在没有设置绝对定位父级元素时，相对于HTML根元素。
+二.height:
+    height: height的百分比相对于最近一层的父级元素（父级元素高度由内容决定时即auto,则元素的百分比高度不会生效,不会向上寻找父级元素）
+    注意：当元素设置了绝对定位后，相对于最近一层设置了定位的父级元素（除去static）（此时可以向上寻找满足条件的父级元素），在没有设置绝对定位父级元素时，相对于HTML根元素。
+
+
+浮动：（只有元素设置或者继承了position: relative,position: static浮动才会生效（其它属性的position，如pisition:flex会让浮动失效））。
+
+-->
+    <div class="parent">
+        <div class="child">
+
+        </div>
+    </div>
+</body>
+</html>

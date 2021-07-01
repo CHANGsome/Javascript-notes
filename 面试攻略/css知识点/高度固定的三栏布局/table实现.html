@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三栏布局</title>
+    <style>
+        .content{
+            width: 100%;
+            height: 500px;
+            display: table;
+        }
+        .content div{
+            height: 100%;
+            display: table-cell;
+        }
+        .left,.right{
+            width: 300px;
+            background-color: chocolate;
+        }
+        .middle{
+            background-color: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+<!--
+注意：因为display:table;模拟表格元素进行布局，所以也具有table元素的性质。
+1、table是正常的块级元素，有padding、border和margin。
+2、table-row只有border。
+3、table-cell只有border和padding。
+4、table布局左右是一样的高度，取最高的那个
+-->
+<section class="content">
+    <div class="left">left</div>
+    <div class="middle">middle</div>
+    <div class="right">class</div>
+</section>
+</body>
+</html>

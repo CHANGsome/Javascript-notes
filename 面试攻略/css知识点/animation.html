@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animation</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: #339933;
+            animation: run 1s linear;
+            /*animation-direction: reverse;*/
+            animation-iteration-count: infinite;
+            /*animation-iteration-count: 2;*/
+            /*animation-fill-mode: forwards;*/
+            animation-fill-mode: backwards;
+            /*animation-play-state: paused;*/
+        }
+        @keyframes run {
+            0%{
+                width: 100px;
+            }
+            50%{
+                width: 300px;
+            }
+            100%{
+                width: 800px;
+            }
+        }
+        .box2{
+            width: 1600px;
+            height: 1200px;
+            background: url("imgs/allbgs.png") no-repeat;
+            animation: animate 1s infinite;
+            animation-timing-function: steps(1);    /*去掉补间*/
+        }
+        @keyframes animate {
+            0%{
+                background-positions: 0 0;
+            }
+            15%{
+                background-position: 0 -1200px;
+            }
+            30%{
+                background-position: 0 -2400px;
+            }
+            45%{
+                background-position: 0 -3600px;
+            }
+            60%{
+                background-position: 0 -4800px;
+            }
+            75%{
+                background-position: 0 -6000px;
+            }
+            90%{
+                background-position: 0 -7200px;
+            }
+            100%{
+                background-position: 0 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">box</div>
+    <div class="box2"></div>
+</body>
+</html>

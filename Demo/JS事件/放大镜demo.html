@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 350px;
+            height: 350px;
+            border: 1px solid #999;
+            -webkit-box-shadow: 5px 5px 5px #aaa;
+            -moz-box-shadow: 5px 5px 5px #aaa;
+            box-shadow: 5px 5px 5px #aaa;
+            position: relative;
+            cursor: move;
+        }
+        .box img{
+            width: 100%;
+            height: 100%;
+        }
+        .box-mark{
+            width: 175px;
+            height: 175px;
+            background-color: #999;
+            opacity: 0.5;
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+            border-radius: 50%;
+        }
+        .big-box{
+            width: 350px;
+            height: 350px;
+            position: absolute;
+            top: 0;
+            left: 360px;
+            border: 1px solid #999;
+            overflow: hidden;
+            display: none;
+            border-radius: 50%;
+        }
+        .big-box img{
+            width: 200%;
+            height: 200%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="../imgs/iphone.jpg" alt="">
+        <div class="box-mark"></div>
+    </div>
+    <div class="big-box">
+        <img src="../imgs/iphone_big.jpg" alt="">
+    </div>
+
+    <script>
+        var box = document.getElementsByClassName("box")[0];
+        var mark = document.getElementsByClassName("box-mark")[0];
+        var bigBox = document.getElementsByClassName("big-box")[0];
+        var bigImg = bigBox.getElementsByTagName("img")[0];
+
+        function getMark(e) {
+            var left = e.clientX - box.offsetLeft - box.clientLeft - mark.offsetWidth/2;
+            var top = e.clientY - box.offsetTop - box.clientTop  - mark.offsetHeight/2;
+            var maxL = box.clientWidth - mark.offsetWidth;
+            var maxT = box.clientHeight - mark.offsetHeight;
+            if(left<0){
+                mark.style.left = 0;
+            }else if(left>maxL){
+                mark.style.left = maxL + "px";
+                bigImg.style.left = -2*maxL + "px";
+            }else{
+                mark.style.left = left +"px";
+                bigImg.style.left = -2*left +"px";
+            }
+
+            if(top<0){
+                mark.style.top = 0;
+            }else if(top>maxT){
+                mark.style.top = maxT + "px";
+                bigImg.style.top = -2*maxT + "px";
+            }else{
+                mark.style.top = top + "px";
+                bigImg.style.top = -2*top + "px";
+            }
+        }
+        box.onmouseenter = function (e) {
+            e = e || window.event;
+            mark.style.display = "block";
+            bigBox.style.display = "block";
+            getMark(e);
+        };
+        box.onmousemove = function (e) {
+            getMark(e);
+        };
+        box.onmouseleave = function (e) {
+            e = e || window.event;
+            mark.style.display = "none";
+            bigBox.style.display = "none";
+        };
+    </script>
+</body>
+</html>

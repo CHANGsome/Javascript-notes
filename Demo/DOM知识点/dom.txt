@@ -1,0 +1,33 @@
+1、选择器：
+document.getElementById()
+context.getElementsByTagName(TagName) => 把制定容器中子子孙孙辈分的所有标签名为TagName的都获取到了
+context.getElementsByClassName(ClassName) => 在IE6~8下不兼容
+document.getElementsByName() => 在IE浏览器中只对表单元素的name起作用
+document.body
+document.documentElement => 获取html元素
+context.querySelector/context.querySelectorAll => 在IE6~8下不兼容，通过这个获取的节点集合不存在DOM映射
+
+2、描述节点和节点之间关系的属性（在标准浏览器中会把空格和换行当做文本节点处理）：
+childNodes
+children => 在IE6~8下获取的结果和标准浏览器获取的结果不一致
+parentNode
+previousSibling/previousElementSibling
+nextSibling/nextElementSibling
+lastChild/lastElementChild
+firstChild/firstElementChild
+
+3、DOM的增删改
+createElement
+document.createElementFragment()
+appendChild
+insertBefore
+cloneNode(true/false)
+replaceChild
+removeChild
+get/set/removeAttribute
+
+4、DOM盒子模型
+13个属性
+
+
+
